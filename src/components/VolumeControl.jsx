@@ -1,36 +1,50 @@
 // VolumeControl.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { SpeakerXMarkIcon, SpeakerWaveIcon } from '@heroicons/react/24/solid';
 
-const VolumeControl = ({ value, onChange }) => {
-	return (
-		<div className="flex items-center space-x-2">
-			{value === 0 ? ( 
-				<SpeakerXMarkIcon className="h-5 w-5 text-gray-400" /> 
-			) : (
-				<SpeakerWaveIcon className="h-5 w-5 text-gray-600" />
-			)}
+const VolumeControl = () => {
+	const [volume, setVolume] = useState(50); // Initial volume
 
-			<div className="relative w-full h-2 bg-gray-200 rounded-full">
-				<div 
-					className="absolute h-full bg-blue-500 rounded-full" 
-					style={{ width: `${value}%` }} 
-				/>
-				<input
-					type="range"
-					min="0"
-					max="100"
-					value={value}
-					onChange={onChange}
-					className="absolute w-full h-full appearance-none bg-transparent focus:outline-none"
-				/>
-				<div 
-					className="absolute -top-2 -left-2 w-4 h-4 bg-blue-500 rounded-full transform translate-x-1/2" 
-					style={{ left: `${value}%` }}
-				/>
-			</div>
-		</div>
-	);
+  const handleVolumeChange = (event) => {
+    setVolume(parseInt(event.target.value, 10));
+  };
+
+  return (
+    <div className="flex items-center space-x-2">
+      {volume === 0 ? (
+        <SpeakerXMarkIcon className="h-5 w-5 text-gray-400" />
+      ) : (
+        <SpeakerWaveIcon className="h-5 w-5 text-gray-600" />
+      )}
+
+<div className="relative w-64 h-2 bg-gray-200 rounded-full">
+        <div
+          className={`absolute h-full bg-blue-500 rounded-full transition-all duration-300 ease-in-out`}
+          style={{ width: `${volume}%` }}
+        />
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={volume}
+          onChange={handleVolumeChange}
+          className={`
+            absolute w-full h-full appearance-none bg-transparent focus:outline-none
+            &::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              appearance: none;
+              width: 12px; 
+              height: 12px;
+              background-color: #4b5563; 
+              border-radius: 50%;
+              cursor: pointer;
+			  text-color: #4b5563;
+            }
+          `}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default VolumeControl;

@@ -5,12 +5,12 @@ import SongTitle from './SongTitle';
 import PlayControls from './PlayControls';
 import VolumeControl from './VolumeControl';
 
-const CurrentlyPlaying = () => {
+const CurrentlyPlaying = ({ song }) => {
 	return (
-		<div className="bg-gray-100 p-6 rounded-lg shadow-md flex flex-col items-center"> 
+		<div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center"> 
 			<CoverArt imageUrl={null} />
 			<div className="mt-4 text-center">
-				<SongTitle title="Painted in Blue" subtitle="Soul Canvas" />
+				<SongTitle title={song.title} artist={song.artist} />
 			</div>
 			<div className="mt-6">
 				<PlayControls />
