@@ -24,10 +24,10 @@ const MusicPlayer = () => {
 
 	return (
 		<div className="flex flex-col md:flex-row"> 
-			<div className="md:w-1/3 p-4"> 
+			<div className="md:w-1/2 p-4"> 
 				<CurrentlyPlaying song={currentSong}/>
 			</div>
-			<div className="md:w-2/3 p-4"> 
+			<div className="md:w-1/2 p-4"> 
 				<Playlist songs={playlistData} onSongSelect={handleSongSelect} />
 			</div>
 		</div>

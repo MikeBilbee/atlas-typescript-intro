@@ -7,13 +7,13 @@ import VolumeControl from './VolumeControl';
 
 const CurrentlyPlaying = ({ song }) => {
 	return (
-		<div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center"> 
+		<div className=" sm:h-200 md:h-screen lg:h-screen bg-light-secondary dark:bg-dark-primary p-6 rounded-lg shadow-md border-gray-300 flex flex-col items-center"> 
 			<CoverArt imageUrl={null} />
-			<div className="mt-4 text-center">
+			<div className="mt-4 text-left w-10/12">
 				<SongTitle title={song.title} artist={song.artist} />
 			</div>
-			<div className="mt-6">
-				<PlayControls />
+			<div className="mt-6 w-full">
+				<PlayControls  />
 			</div>
 			<div className="mt-4 flex items-center">
 				<VolumeControl value={50} onChange={() => {}} />
