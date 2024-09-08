@@ -19,7 +19,7 @@ const VolumeControl = () => {
 
 		<div className={`relative min-w-64 sm:w-35 md:w-45 lg:w-96 h-2 bg-gray-200 dark:bg-gray-400 rounded-full`}>
 			<div
-				className={`absolute h-full bg-light-secondary dark:bg-dark-secondary rounded-full transition-all duration-300 ease-in-out`}
+				className={`absolute h-full bg-light-background dark:bg-dark-secondary rounded-full transition-all duration-300 ease-in-out`}
 				style={{ width: `${volume}%` }}
 			/>
 				<input

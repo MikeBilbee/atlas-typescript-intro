@@ -7,9 +7,9 @@ const PlayListItem = ({ title, artist, length }) => {
 		<div className="flex items-center justify-between py-2">
 			<div>
 				<h3 className="text-lg font-medium dark:text-gray-400">{title}</h3>
-				<p className="text-gray-500 text-sm">{artist}</p>
+				<p className="dark:text-gray-500 text-sm">{artist}</p>
 			</div>
-			<p className="text-gray-500 text-sm">{length}</p>
+			<p className="dark:text-gray-500 text-sm">{length}</p>
 		</div>
 	);
 };
