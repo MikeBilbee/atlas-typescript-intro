@@ -31,6 +31,15 @@ const CurrentlyPlaying: React.FC<CurrentlyPlayingProps> = ({
 	onShuffleToggle
 }) => {
 
+	const [volume, setVolume] = useState(50);
+
+	const handleVolumeChange = (newVolume: number) => {
+		setVolume(newVolume);
+		if (audioRef.current) {
+			audioRef.current.volume = newVolume / 100;
+		}
+	};
+
 	const [isPlaying, setIsPlaying] = useState(false);
 	const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -87,6 +96,9 @@ const CurrentlyPlaying: React.FC<CurrentlyPlayingProps> = ({
 		}
 	};
 
+	const isFirstSong = playlist.length > 0 && playlist[0].title === song.title;
+	const isLastSong = playlist.length > 0 && playlist[playlist.length - 1].title === song.title;
+
 	return (
 		<div className=" sm:h-200 md:h-[620px] lg:h-[620px] bg-light-primary dark:bg-dark-primary p-6 rounded-lg shadow-md border-gray-300 flex flex-col justify-between items-center"> 
 			{song && <CoverArt cover={song.cover} />}
@@ -97,8 +109,10 @@ const CurrentlyPlaying: React.FC<CurrentlyPlayingProps> = ({
 			<div className=" flex-grow w-full px-10">
 				<PlayControls 
 					onPlayPause={handlePlayPause}
-					onRewind={handleBack} 
-					onFastForward={handleSkip}
+					onRewind={isFirstSong && !isShuffleOn ? undefined : handleBack} 
+					onFastForward={isLastSong && !isShuffleOn ? undefined : handleSkip}
+					disableRewind={isFirstSong && !isShuffleOn}
+					disableFastForward={isLastSong && !isShuffleOn}
 					isShuffleOn={isShuffleOn}
 					onShuffleToggle={onShuffleToggle}
 					audioRef={audioRef}
@@ -106,7 +120,7 @@ const CurrentlyPlaying: React.FC<CurrentlyPlayingProps> = ({
 				/>
 			</div>
 			<div className=" flex-grow  mt-4 flex items-center">
-				<VolumeControl value={50} onChange={() => {}} />
+				<VolumeControl value={volume} onChange={handleVolumeChange} />
 			</div>
 			<audio
 				ref={audioRef}
