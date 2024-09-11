@@ -10,8 +10,11 @@ export default {
         'dark-secondary': '#9B287B',
         'dark-background': '#170F11',
         'light-primary': '#73e4bb',
-        'light-secondary': '#D0D0D0',
+        'light-secondary': '#E5BEED',
         'light-background': '#9B287B'
+      },
+      borderColor: {
+        black: '#000000'
       }
     },
   },

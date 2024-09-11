@@ -49,15 +49,15 @@ const handlePlaybackRateClick = () => {
 	};
 
 	return (
-		<div className="flex items-center justify-around">
+		<div className="flex items-center justify-around ">
 			<button
 				onClick={handlePlaybackRateClick}
-				className="p-2 rounded-md dark:text-black bg-light-secondary dark:bg-dark-secondary border-gray-400 hover:border-black"
+				className="p-2 rounded-md dark:text-black bg-light-secondary dark:bg-dark-secondary border hover:border-black"
 				aria-label="Playback Rate"
 			>{playbackRate}x</button> 
 			<button 
 				onClick={onRewind} 
-				className={`p-2 rounded-md bg-light-secondary dark:bg-dark-secondary dark:text-gray-400 border-gray-400 hover:border-black ${
+				className={`p-2 rounded-md bg-light-secondary dark:bg-dark-secondary dark:text-gray-400 border hover:border-black ${
 					disableRewind ? 'opacity-50 cursor-not-allowed' : ''
 				}`} 
 				aria-label="Rewind"
@@ -65,20 +65,20 @@ const handlePlaybackRateClick = () => {
 			>
 				<BackwardIcon className="h-5 w-5 text-gray-600 dark:text-black" /> 
 			</button>
-			<button onClick={handlePlayPauseClick} className="p-3 rounded-md bg-light-secondary dark:bg-dark-secondary dark:text-gray-400 border-gray-400 hover:border-black" aria-label={isPlaying ? 'Pause' : 'Play'}>
+			<button onClick={handlePlayPauseClick} className="p-3 rounded-md bg-light-secondary dark:bg-dark-secondary dark:text-gray-400 border hover:border-black" aria-label={isPlaying ? 'Pause' : 'Play'}>
 				{isPlaying ? <PauseIcon className="h-6 w-6 text-gray-600 dark:text-black" /> : <PlayIcon className="h-6 w-6 text-black" />}
 			</button>
 			<button 
 				onClick={onFastForward} 
-				className={`p-2 rounded-md bg-light-secondary dark:bg-dark-secondary dark:text-gray-400 border-gray-400 hover:border-black ${
-					disableFastForward ? 'opacity-50 cursor-not-allowed' : '' // Apply styles if disabled
+				className={`p-2 rounded-md bg-light-secondary dark:bg-dark-secondary dark:text-gray-400 border hover:border-black ${
+					disableFastForward ? 'opacity-50 cursor-not-allowed' : ''
 				}`} 
 				aria-label="Fast Forward"
 				disabled={disableFastForward}
 			>
 				<ForwardIcon className="h-5 w-5 text-gray-600 dark:text-black " /> 
 			</button>
-			<button onClick={handleShuffle} className={`p-2 rounded-md bg-light-secondary dark:bg-dark-secondary dark:text-gray-400 border-gray-400 hover:border-black ${isShuffleOn ? 'text-blue-500' : ''}`} aria-label="Shuffle"> 
+			<button onClick={handleShuffle} className={`p-2 rounded-md bg-light-secondary dark:bg-dark-secondary dark:text-gray-400 border hover:border-black ${!isShuffleOn ? 'opacity-50' : ''}`} aria-label="Shuffle"> 
 				<ArrowPathRoundedSquareIcon className="h-5 w-5 text-gray-600 dark:text-black" /> 
 			</button>
 		</div>
